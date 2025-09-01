@@ -1,4 +1,5 @@
-import datetime
+
+import datetime, pytz
 from all_functions import *
 import requests
 import pandas as pd
@@ -11,10 +12,8 @@ def send_telegram_message(message):
     data = {"chat_id": CHAT_ID, "text": message}
     requests.post(url, data=data)
 
-df = pd.DataFrame()
-
 def run_task():
-    now = datetime.datetime.now().time()
+    now = datetime.datetime.now(pytz.timezone("Asia/Kolkata")).time()
     start = datetime.time(9, 15)
     end = datetime.time(15, 45)
 
